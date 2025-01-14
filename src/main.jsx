@@ -1,0 +1,15 @@
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import "./index.css";
+import router from "./Routes/Routes.jsx";
+
+import { RouterProvider } from "react-router-dom";
+
+createRoot(document.getElementById("root")).render(
+  <div className="max-w-7xl mx-auto px-2">
+    <StrictMode>
+      <RouterProvider router={router} />
+    </StrictMode>
+    ,
+  </div>
+);

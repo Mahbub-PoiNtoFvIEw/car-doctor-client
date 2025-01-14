@@ -1,0 +1,79 @@
+import React, { useState } from "react";
+import img from "../../assets/images/login/login.svg";
+import { FaEyeSlash, FaFacebookF } from "react-icons/fa";
+import { FaLinkedinIn } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
+import { Link } from "react-router-dom";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
+
+const Login = () => {
+    const [showPass, setShowPass] =  useState(false);
+  return (
+    <div className="hero min-h-screen mb-2">
+      <div className="hero-content flex-col lg:flex-row">
+        <div className="w-1/2 mr-16">
+          <img src={img} alt="" />
+        </div>
+        <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl border-[.5px] border-[#E8E8E8]">
+          <form className="card-body py-2">
+            <h1 className="text-4xl text-center font-bold">Login !</h1>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Email</span>
+              </label>
+              <input
+                type="email"
+                placeholder="email"
+                className="input input-bordered"
+                required
+              />
+            </div>
+            <div className="form-control relative">
+              <label className="label">
+                <span className="label-text">Password</span>
+              </label>
+              <input
+                type={showPass? "text" : "password"}
+                placeholder="password"
+                className="input input-bordered"
+                required
+              />
+              <label className="label">
+                <a href="#" className="label-text-alt link link-hover">
+                  Forgot password?
+                </a>
+              </label>
+              <div onClick={()=>setShowPass(!showPass)} className="text-xl text-[#737373] absolute right-2 top-12 cursor-pointer">
+                {
+                    !showPass?
+                    <FaRegEye></FaRegEye>
+                    :<FaRegEyeSlash></FaRegEyeSlash>
+                }
+              </div>
+            </div>
+            <div className="form-control mt-2">
+              <input className="btn bg-[#FF3811] text-white" type="submit" value="Sign In" />
+            </div>
+          </form>
+          <div className="mb-4 space-y-2 text-center">
+              <p className="text-[#444444]">or Sign in with</p>
+              <div className="flex justify-center items-center gap-4 ">
+                <button className="rounded-full p-2 text-[#3B5998] bg-[#F5F5F8]">
+                  <FaFacebookF></FaFacebookF>
+                </button>
+                <button className="rounded-full bg-[#F5F5F8] p-2 text-[#0A66C2]">
+                  <FaLinkedinIn></FaLinkedinIn>
+                </button>
+                <button className="rounded-full bg-[#F5F5F8] p-2 text-[#0A66C2]">
+                  <FcGoogle></FcGoogle>
+                </button>
+              </div>
+              <p className="pt-3 text-[#737373]">do not Have an account ? <Link to={`/signIn`} className="text-[#FF3811]">Sign Up</Link></p>
+            </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Login;
