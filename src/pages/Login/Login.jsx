@@ -1,13 +1,35 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import img from "../../assets/images/login/login.svg";
 import { FaEyeSlash, FaFacebookF } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Login = () => {
     const [showPass, setShowPass] =  useState(false);
+    const {loginUser} = useContext(AuthContext);
+
+    const handleLogin = e =>{
+      e.preventDefault();
+
+      const form = e.target;
+
+      const email = form.email.value;
+      const password = form.password.value;
+      form.reset();
+
+      console.log(email, password);
+
+      loginUser(email, password)
+      .then(result=>{
+        console.log(result.user);
+      })
+      .catch(error=>{
+        console.log(error.message);
+      })
+    }
   return (
     <div className="hero min-h-screen mb-2">
       <div className="hero-content flex-col lg:flex-row">
@@ -15,7 +37,7 @@ const Login = () => {
           <img src={img} alt="" />
         </div>
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl border-[.5px] border-[#E8E8E8]">
-          <form className="card-body py-2">
+          <form onSubmit={handleLogin} className="card-body py-2">
             <h1 className="text-4xl text-center font-bold">Login !</h1>
             <div className="form-control">
               <label className="label">
@@ -23,6 +45,7 @@ const Login = () => {
               </label>
               <input
                 type="email"
+                name="email"
                 placeholder="email"
                 className="input input-bordered"
                 required
@@ -35,6 +58,7 @@ const Login = () => {
               <input
                 type={showPass? "text" : "password"}
                 placeholder="password"
+                name="password"
                 className="input input-bordered"
                 required
               />
@@ -68,7 +92,7 @@ const Login = () => {
                   <FcGoogle></FcGoogle>
                 </button>
               </div>
-              <p className="pt-3 text-[#737373]">do not Have an account ? <Link to={`/signIn`} className="text-[#FF3811]">Sign Up</Link></p>
+              <p className="pt-3 text-[#737373]">do not Have an account ? <Link to={`/signup`} className="text-[#FF3811]">Sign Up</Link></p>
             </div>
         </div>
       </div>

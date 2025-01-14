@@ -1,16 +1,37 @@
-import React from "react";
+import React, { useContext } from "react";
 import logo from "../../../assets/logo.svg";
 import { Link, NavLink } from "react-router-dom";
 import { RiMenu2Line } from "react-icons/ri";
+import { AuthContext } from "../../../Provider/AuthProvider";
 
 const NavBar = () => {
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogOut = () =>{
+    logOut()
+    .then(result=>{
+      console.log(result.user);
+    })
+    .catch(error=>{
+      console.error(error.message);
+    })
+  }
   const navLinks = (
     <>
-        <li><NavLink to={'/'}>Home</NavLink></li>
-        <li><NavLink to={'/about'}>About</NavLink></li>
-        <li><NavLink to={'/services'}>Services</NavLink></li>
-        <li><NavLink to={'/blog'}>Blog</NavLink></li>
-        <li><NavLink to={'/contact'}>Contact</NavLink></li>
+      <li>
+        <NavLink to={"/"}>Home</NavLink>
+      </li>
+      <li>
+        <NavLink to={"/about"}>About</NavLink>
+      </li>
+      <li>
+        <NavLink to={"/services"}>Services</NavLink>
+      </li>
+      <li>
+        <NavLink to={"/blog"}>Blog</NavLink>
+      </li>
+      <li>
+        <NavLink to={"/contact"}>Contact</NavLink>
+      </li>
     </>
   );
   return (
@@ -32,12 +53,33 @@ const NavBar = () => {
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-          {navLinks}
-        </ul>
+        <ul className="menu menu-horizontal px-1">{navLinks}</ul>
       </div>
       <div className="navbar-end">
-      <button className="btn btn-outline btn-warning">Appointment</button>
+        <div>{}</div>
+        <button className="btn btn-outline text-[#FF3811]">Appointment</button>
+        <div className="ml-2 flex items-center ">
+          {user ? (
+            user?.photoURL ? (
+              <div className="flex justify-between gap-2 ">
+                <button onClick={handleLogOut} className="btn bg-[#FF3811] text-[#FFFFFF]">LogOut</button>
+                <img src="" alt="" />
+              </div>
+            ) : (
+              <div className="flex justify-between gap-2">
+                <button onClick={handleLogOut} className="btn bg-[#FF3811] text-[#FFFFFF]">LogOut</button>
+                <p className="w-12 h-12 p-2 text-3xl font-bold text-blue-700 rounded-full border-[2px]  border-[#FF3811] flex justify-center items-center">
+                  {user?.email.charAt(0).toUpperCase()}
+                </p>
+              </div>
+            )
+          ) : (
+            <div className="flex justify-between gap-2">
+              <Link to={`/signin`}><button className="btn bg-[#FF3811] text-[#FFFFFF]">Signin</button></Link>
+              <Link to={`/signup`}><button className="btn bg-[#FF3811] text-[#FFFFFF]">Signup</button></Link>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
