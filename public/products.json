@@ -1,0 +1,98 @@
+[
+  {
+    "title": "Car Engine Plug",
+    "rating": 3.6,
+    "price": 16.99,
+    "description": "Durable and efficient spark plug for improved engine performance.",
+    "category": "Engine Parts",
+    "image": "https://i.postimg.cc/sxNmZg0L/1.png"
+  },
+  {
+    "title": "Car Engine Filter",
+    "rating": 4.8,
+    "price": 24.49,
+    "description": "Reliable engine filter to ensure clean airflow for maximum efficiency.",
+    "category": "Engine Parts",
+    "image": "https://i.postimg.cc/L4CNWx6V/2.png"
+  },
+  {
+    "title": "Cloos LED Light",
+    "rating": 3.7,
+    "price": 14.99,
+    "description": "Energy-saving LED light for enhanced visibility on the road.",
+    "category": "Lighting",
+    "image": "https://i.postimg.cc/j5q4g7p9/3.png"
+  },
+  {
+    "title": "Car Battery Charger",
+    "rating": 4.5,
+    "price": 55.0,
+    "description": "Fast and safe battery charger with multiple charging modes.",
+    "category": "Electronics",
+    "image": "https://i.postimg.cc/ZnCFZhKx/4.png"
+  },
+  {
+    "title": "Windshield Wiper Blade",
+    "rating": 5.0,
+    "price": 9.99,
+    "description": "Premium wiper blades for streak-free cleaning and long-lasting use.",
+    "category": "Accessories",
+    "image": "https://i.postimg.cc/zv6wGPyZ/5.png"
+  },
+  {
+    "title": "Car Air Freshener",
+    "rating": 4.2,
+    "price": 6.5,
+    "description": "Long-lasting air freshener for a refreshing interior ambiance.",
+    "category": "Interior Accessories",
+    "image": "https://i.postimg.cc/XNzkLXQH/6.png"
+  },
+  {
+    "title": "Car Tire Inflator",
+    "rating": 4.7,
+    "price": 39.99,
+    "description": "Compact and efficient tire inflator with digital pressure gauge.",
+    "category": "Tools",
+    "image": "https://i.postimg.cc/XNzkLXQH/6.png"
+  },
+  {
+    "title": "Car LED Headlight",
+    "rating": 3.9,
+    "price": 89.99,
+    "description": "Super bright LED headlights for excellent night visibility.",
+    "category": "Lighting",
+    "image": "https://i.postimg.cc/zv6wGPyZ/5.png"
+  },
+  {
+    "title": "Car Seat Cover",
+    "rating": 4.6,
+    "price": 59.99,
+    "description": "Stylish and comfortable seat covers for added protection.",
+    "category": "Interior Accessories",
+    "image": "https://i.postimg.cc/zv6wGPyZ/5.png"
+  },
+  {
+    "title": "Alloy Wheel Cleaner",
+    "rating": 5.0,
+    "price": 10.99,
+    "description": "Effective cleaner to restore shine to your alloy wheels.",
+    "category": "Cleaning Products",
+    "image": "https://i.postimg.cc/L4CNWx6V/2.png"
+  },
+  {
+    "title": "Car Engine Oil",
+    "rating": 4.8,
+    "price": 29.99,
+    "description": "High-quality engine oil for enhanced performance and protection.",
+    "category": "Engine Parts",
+    "image": "https://i.postimg.cc/L4CNWx6V/2.png"
+  },
+  {
+    "title": "Car Trunk Organizer",
+    "rating": 3.6,
+    "price": 25.0,
+    "description": "Durable trunk organizer for better storage and arrangement.",
+    "category": "Accessories",
+    "image": "https://i.postimg.cc/L4CNWx6V/2.png"
+  }
+]
