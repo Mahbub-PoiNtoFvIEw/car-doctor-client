@@ -3,6 +3,7 @@ import logo from "../../../assets/logo.svg";
 import { Link, NavLink } from "react-router-dom";
 import { RiMenu2Line } from "react-icons/ri";
 import { AuthContext } from "../../../Provider/AuthProvider";
+import { MdAddShoppingCart } from "react-icons/md";
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -61,12 +62,14 @@ const NavBar = () => {
         <div className="ml-2 flex items-center ">
           {user ? (
             user?.photoURL ? (
-              <div className="flex justify-between gap-2 ">
+              <div className="flex justify-between items-center gap-2 ">
+                <Link to={`/bookings`}><FaBasketShopping></FaBasketShopping></Link>
                 <button onClick={handleLogOut} className="btn bg-[#FF3811] text-[#FFFFFF]">LogOut</button>
                 <img src="" alt="" />
               </div>
             ) : (
-              <div className="flex justify-between gap-2">
+              <div className="flex justify-between items-center gap-2">
+                <Link to={`/bookings`} className="text-2xl text-[#FF3811]"><MdAddShoppingCart></MdAddShoppingCart></Link>
                 <button onClick={handleLogOut} className="btn bg-[#FF3811] text-[#FFFFFF]">LogOut</button>
                 <p className="w-12 h-12 p-2 text-3xl font-bold text-blue-700 rounded-full border-[2px]  border-[#FF3811] flex justify-center items-center">
                   {user?.email.charAt(0).toUpperCase()}

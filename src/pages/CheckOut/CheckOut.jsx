@@ -15,14 +15,28 @@ const CheckOut = () => {
     const date = form.date.value;
     const email = user?.email;
 
-    const order ={
+    const booking ={
         customerName: name,
         email,
+        image: service.img,
         date,
-        service: service._id,
+        service: service.title,
+        service_id: service._id,
         price: service.price
     }
-    console.log(order)
+    console.log(booking)
+
+    fetch('http://localhost:5000/bookings',{
+      method: "POST",
+      headers:{
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(booking)
+    })
+    .then(res=> res.json())
+    .then(data=>{
+      console.log(data);
+    })
   }
   return (
     <div className="my-6">
