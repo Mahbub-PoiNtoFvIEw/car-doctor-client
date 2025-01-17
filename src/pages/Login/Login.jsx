@@ -6,6 +6,7 @@ import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 import { AuthContext } from "../../Provider/AuthProvider";
+import axios from "axios";
 
 const Login = () => {
   const [showPass, setShowPass] = useState(false);
@@ -26,8 +27,18 @@ const Login = () => {
 
     loginUser(email, password)
       .then((result) => {
-        console.log(result.user);
-        navigate(location?.state ? location?.state : '/')
+        const loggedInUser = result.user;
+        console.log(loggedInUser);
+        const user = {email}
+        // navigate(location?.state ? location?.state : '/')
+        // get access token
+        axios.post('http://localhost:5000/jwt', user)
+        .then(res=>{
+          console.log(res.data);
+        })
+        .catch(error=>{
+          console.log(error.message);
+        })
       })
       .catch((error) => {
         console.log(error.message);
