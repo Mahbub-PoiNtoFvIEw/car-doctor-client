@@ -9,6 +9,7 @@ import { AuthContext } from "../../Provider/AuthProvider";
 
 const SignUp = () => {
   const [showPass, setShowPass] = useState(false);
+  const [passValidation, setPassValidation] = useState("")
   const {createUser} = useContext(AuthContext);
 
   const handleSignup = (e) => {
@@ -19,13 +20,27 @@ const SignUp = () => {
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    form.reset();
+    setPassValidation("")
+
+    if(password.length <8){
+      setPassValidation('Password must be 8 character or longer');
+      return;
+    }
+    if(!/(?=.*[A-Z])/.test(password)){
+      setPassValidation("Ensures at least one uppercase letter");
+      return;
+    }
+    if(!/(?=.*[a-zA-Z])/.test(password)){
+      setPassValidation("Ensures at least one letter");
+      return;
+    }
 
     console.log(name, email, password);
 
     createUser(email, password)
     .then(result=>{
         console.log(result.user);
+        form.reset();
     })
     .catch(error=>{
         console.error(error.message);
@@ -74,6 +89,7 @@ const SignUp = () => {
                 className="input input-bordered"
                 required
               />
+              <p className="text-red-600 font-bold">{passValidation}</p>
               <label className="label">
                 <a href="#" className="label-text-alt link link-hover">
                   Forgot password?

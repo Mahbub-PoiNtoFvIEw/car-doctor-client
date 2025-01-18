@@ -10,6 +10,7 @@ import axios from "axios";
 
 const Login = () => {
   const [showPass, setShowPass] = useState(false);
+  // const [passAuth, setPassAuth] = useState("");
   const { loginUser } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
@@ -21,8 +22,9 @@ const Login = () => {
 
     const email = form.email.value;
     const password = form.password.value;
-    form.reset();
-
+    // if(password > 6){
+    //   return setPassAuth("password must be")
+    // }
     console.log(email, password);
 
     loginUser(email, password)
@@ -30,6 +32,7 @@ const Login = () => {
         const loggedInUser = result.user;
         console.log(loggedInUser);
         const user = {email}
+        form.reset();
         // navigate(location?.state ? location?.state : '/')
         // get access token
         axios.post('http://localhost:5000/jwt', user)
