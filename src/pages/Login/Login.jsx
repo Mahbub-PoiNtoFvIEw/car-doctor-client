@@ -31,17 +31,21 @@ const Login = () => {
       .then((result) => {
         const loggedInUser = result.user;
         console.log(loggedInUser);
-        const user = {email}
+        const user = { email };
         form.reset();
-        // navigate(location?.state ? location?.state : '/')
+
         // get access token
-        axios.post('http://localhost:5000/jwt', user)
-        .then(res=>{
-          console.log(res.data);
-        })
-        .catch(error=>{
-          console.log(error.message);
-        })
+        axios
+          .post("http://localhost:5000/jwt", user, { withCredentials: true })
+          .then((res) => {
+            console.log(res.data);
+            if (res.data.success) {
+              navigate(location?.state ? location?.state : "/");
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       })
       .catch((error) => {
         console.log(error.message);
