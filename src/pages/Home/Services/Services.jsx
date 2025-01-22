@@ -3,16 +3,18 @@ import ServiceCard from "./ServiceCard";
 import calendar from "../../../assets/icons/calendar.png";
 import phone from "../../../assets/icons/phone.png";
 import location from "../../../assets/icons/location.png";
+import useServices from "../../../Hooks/useServices";
 
 const Services = () => {
-  const [services, setServices] = useState([]);
+  // const [services, setServices] = useState([]);
+  const services = useServices();
   const [servicesData, setServicesData] = useState(6);
 
-  useEffect(() => {
-    fetch('http://localhost:5000/services')
-      .then((res) => res.json())
-      .then((data) => setServices(data));
-  }, []);
+  // useEffect(() => {
+  //   fetch('http://localhost:5000/services')
+  //     .then((res) => res.json())
+  //     .then((data) => setServices(data));
+  // }, []);
   return (
     <div className="mb-4">
       <div className="w-1/2 mx-auto text-center">

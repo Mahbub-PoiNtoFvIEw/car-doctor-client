@@ -1,17 +1,16 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import img from "../../assets/images/login/login.svg";
 import { FaEyeSlash, FaFacebookF } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
-import { AuthContext } from "../../Provider/AuthProvider";
-import axios from "axios";
+import useAuth from "../../Hooks/useAuth";
 
 const Login = () => {
   const [showPass, setShowPass] = useState(false);
   // const [passAuth, setPassAuth] = useState("");
-  const { loginUser } = useContext(AuthContext);
+  const { loginUser } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -31,21 +30,8 @@ const Login = () => {
       .then((result) => {
         const loggedInUser = result.user;
         console.log(loggedInUser);
-        const user = { email };
         form.reset();
-
-        // get access token
-        // axios
-        //   .post("http://localhost:5000/jwt", user, { withCredentials: true })
-        //   .then((res) => {
-        //     console.log(res.data);
-        //     if (res.data.success) {
-        //       navigate(location?.state ? location?.state : "/");
-        //     }
-        //   })
-        //   .catch((error) => {
-        //     console.log(error);
-        //   });
+        navigate(location?.state ? location?.state : "/");
       })
       .catch((error) => {
         console.log(error.message);
