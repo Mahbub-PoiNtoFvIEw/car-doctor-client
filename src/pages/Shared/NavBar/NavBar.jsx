@@ -10,10 +10,10 @@ const NavBar = () => {
   const handleLogOut = () =>{
     logOut()
     .then(result=>{
-      console.log(result.user);
+      // console.log(result.user);
     })
     .catch(error=>{
-      console.error(error.message);
+      // console.error(error.message);
     })
   }
   const navLinks = (

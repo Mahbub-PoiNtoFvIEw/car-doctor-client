@@ -24,17 +24,17 @@ const Login = () => {
     // if(password > 6){
     //   return setPassAuth("password must be")
     // }
-    console.log(email, password);
+    // console.log(email, password);
 
     loginUser(email, password)
       .then((result) => {
         const loggedInUser = result.user;
-        console.log(loggedInUser);
+        // console.log(loggedInUser);
         form.reset();
         navigate(location?.state ? location?.state : "/");
       })
       .catch((error) => {
-        console.log(error.message);
+        // console.log(error.message);
       });
   };
   return (

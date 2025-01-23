@@ -35,11 +35,11 @@ const SignUp = () => {
       return;
     }
 
-    console.log(name, email, password);
+    // console.log(name, email, password);
 
     createUser(email, password)
     .then(result=>{
-        console.log(result.user);
+        // console.log(result.user);
         form.reset();
     })
     .catch(error=>{

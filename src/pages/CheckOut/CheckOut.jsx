@@ -5,7 +5,7 @@ import SharedBanner from "../Shared/SharedBanner/SharedBanner";
 
 const CheckOut = () => {
   const service = useLoaderData();
-  console.log("find service by id", service);
+  // console.log("find service by id", service);
   const { user } = useContext(AuthContext);
 
   const handleOrderBook = (e) => {
@@ -25,9 +25,9 @@ const CheckOut = () => {
       service_id: service._id,
       price: service.price,
     };
-    console.log(booking);
+    // console.log(booking);
 
-    fetch("http://localhost:5000/bookings", {
+    fetch("https://car-doctor-server-omega-ten-29.vercel.app/bookings", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -36,7 +36,7 @@ const CheckOut = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
       });
   };
   return (
