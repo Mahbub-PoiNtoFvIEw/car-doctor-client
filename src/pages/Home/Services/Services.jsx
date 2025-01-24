@@ -6,8 +6,9 @@ import location from "../../../assets/icons/location.png";
 import useServices from "../../../Hooks/useServices";
 
 const Services = () => {
-  // const [services, setServices] = useState([]);
-  const services = useServices();
+  const [asc, setAsc] = useState(true);
+  const [search, setSearch] = useState('');
+  const services = useServices(asc, search);
   const [servicesData, setServicesData] = useState(6);
 
   // useEffect(() => {
@@ -15,6 +16,12 @@ const Services = () => {
   //     .then((res) => res.json())
   //     .then((data) => setServices(data));
   // }, []);
+
+  const handleSearch = e =>{
+    e.preventDefault();
+    setSearch(e.target.search.value)
+  }
+  console.log(search)
   return (
     <div className="mb-4">
       <div className="w-1/2 mx-auto text-center">
@@ -24,6 +31,22 @@ const Services = () => {
           the majority have suffered alteration in some form, by injected
           humour, or randomised words which don't look even slightly believable.{" "}
         </p>
+        <form onSubmit={handleSearch} className="join">
+          <input
+          type="text"
+          name="search"
+            className="input input-bordered join-item"
+            placeholder="Email"
+          />
+          <input type="submit" value="search" className="btn join-item rounded-r-full"/>
+        </form>
+        <br />
+        <button
+          onClick={() => setAsc(!asc)}
+          className="btn bg-[#FF3811] text-white"
+        >
+          Price: {asc ? "High to Low" : "Low to High"}
+        </button>
       </div>
       <div className="grid md:grid-cols-3 grid-cols-1 gap-4">
         {services.slice(0, servicesData).map((service, idx) => (

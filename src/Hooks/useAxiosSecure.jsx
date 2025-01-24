@@ -2,8 +2,8 @@ import axios from "axios";
 import { useEffect } from "react";
 import useAuth from "./useAuth";
 import { useNavigate } from "react-router-dom";
-
-const axiosSecure = axios.create({
+// https://car-doctor-server-omega-ten-29.vercel.app 
+export const axiosSecure = axios.create({
     baseURL: 'https://car-doctor-server-omega-ten-29.vercel.app',
     withCredentials: true
 })
